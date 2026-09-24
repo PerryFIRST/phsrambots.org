@@ -155,7 +155,7 @@
                     if (!response.ok) throw new Error('no-manifest');
                     return response.json();
                 })
-                .catch(() => fetch('https://api.github.com/repos/frc6548/phsrambots.org/contents/data/gallery').then(r => r.json()))
+                .catch(() => fetch('https://api.github.com/repos/PerryFIRST/phsrambots.org/contents/data/gallery').then(r => r.json()))
                 .then(data => {
                     const files = Array.isArray(data)
                         ? data.filter(file => (!file.type || file.type === 'file') && /\.(jpe?g|png|gif|webp)$/i.test(file.name))
