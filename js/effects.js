@@ -39,7 +39,6 @@ window.addEventListener('DOMContentLoaded', function () {
   var SELECTORS = [
     '.stats-section',
     '.first-section',
-    '.ftc-section',
     '.signup-section',
     '.p-anim',
   ];
