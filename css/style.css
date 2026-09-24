@@ -554,6 +554,8 @@ a {
     display: flex;
     align-items: center;
     cursor: pointer;
+    /* Lets the title ellipsize instead of pushing the nav off narrow screens */
+    min-width: 0;
 }
 
 .site-nav{
@@ -564,6 +566,34 @@ a {
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+/* Links to the sister team's site, so it uses that team's color */
+.team-switch{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    padding: 6px 20px;
+    border-radius: 999px;
+    background: #5170ff;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 150ms ease, transform 150ms ease;
+}
+
+.team-switch:hover{
+    background: #435dd4;
+    transform: translateY(-1px);
+}
+
+.team-switch:focus-visible{
+    outline: 2px solid rgba(0,0,0,0.4);
+    outline-offset: 2px;
 }
 
 .menu-button{
@@ -678,6 +708,11 @@ a {
 }
 
 @media (max-width: 480px) {
+    .team-switch{
+        font-size: 15px;
+        padding: 5px 10px;
+    }
+
     .menu-button{
         height: 40px;
         margin: 8px;
@@ -710,6 +745,26 @@ a {
     }
 }
 
+/* Very narrow phones: shrink so the title, FTC button, and hamburger all fit */
+@media (max-width: 400px) {
+    .siteicon{
+        margin: 8px 4px 8px 8px;
+    }
+
+    .sitetitle{
+        font-size: 24px;
+    }
+
+    .team-switch{
+        font-size: 13px;
+        padding: 4px 8px;
+    }
+
+    .menu-button{
+        margin: 8px 4px;
+    }
+}
+
 /* Tablets (481px to 768px) */
 @media (max-width: 768px) and (min-width: 481px) {
     .siteicon{
@@ -719,6 +774,11 @@ a {
 
     .sitetitle{
         font-size: 55px;
+    }
+
+    .team-switch{
+        font-size: 20px;
+        padding: 5px 14px;
     }
 
     .menu-button{
@@ -739,6 +799,11 @@ a {
 
     .sitetitle{
         font-size: 70px;
+    }
+
+    .team-switch{
+        font-size: 24px;
+        padding: 6px 16px;
     }
 
     .menu-button{

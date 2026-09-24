@@ -137,6 +137,13 @@ window.addEventListener('DOMContentLoaded', function () {
     menu.appendChild(li);
   });
 
+  var teamSwitch = document.createElement('a');
+  teamSwitch.className = 'team-switch';
+  teamSwitch.href = 'https://ftc.phsrambots.org';
+  teamSwitch.textContent = 'FTC';
+  teamSwitch.setAttribute('aria-label', 'Go to our FTC team site');
+
+  nav.appendChild(teamSwitch);
   nav.appendChild(menuButton);
   nav.appendChild(menu);
   container.appendChild(nav);
