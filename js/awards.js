@@ -81,6 +81,7 @@
 
     var link = el('award-modal-link');
     link.href = award.link;
+    link.textContent = award.linkText || 'View on The Blue Alliance';
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
 

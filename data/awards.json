@@ -1,6 +1,18 @@
 {
   "awards": [
     {
+      "id": "girls-competition-2026",
+      "tier": "flank",
+      "side": "left",
+      "title": "Girls Competition 2026 Finalists & Winner",
+      "sponsor": "",
+      "event": "2026 GRG Robotics",
+      "details": "Reached the finals and took the win at GRG Robotics, West Michigan's girls robotics competition.",
+      "link": "https://girlsrobotics.org/",
+      "linkText": "View on GRG Robotics",
+      "imageUrl": "/data/awards/girls-robotics-rexi.webp"
+    },
+    {
       "id": "rookie-allstar-2017",
       "tier": "flank",
       "side": "left",
