@@ -8,7 +8,7 @@
     { "text": "Awards", "href": "/awards" },
     { "text": "Donations", "href": "/donate" },
     { "text": "Links", "href": "/links" },
-    { "text": "Sponsor Form", "href": "/data/sponsors/form.pdf" },
+    { "text": "Sponsor Form", "href": "https://docs.google.com/document/d/1W7PE0sZNjBbgHrT8crRPrcISC0f2Np080hVs4G9Kxqs/edit?usp=sharing", "target": "_blank" },
     { "text": "The Blue Alliance", "href": "https://www.thebluealliance.com/team/6548", "target": "_blank" }
   ],
   "location": "UC5PIEJveCA3OCwgUGVycnksIE1pY2hpZ2FuIDQ4ODcy",
