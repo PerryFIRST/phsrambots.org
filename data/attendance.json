@@ -1,0 +1,11 @@
+{
+  "earning": [
+    { "activity": "Normal hour", "points": "1" },
+    { "activity": "Outreach / outgoing hour", "points": "1.5" },
+    { "activity": "Cleaning, out-of-room fundraising, or sponsorship hour", "points": "2" }
+  ],
+  "requirements": [
+    { "event": "Offseason events", "points": "50" },
+    { "event": "Onseason events", "points": "150" }
+  ]
+}

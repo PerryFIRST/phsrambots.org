@@ -347,6 +347,20 @@ window.addEventListener('DOMContentLoaded', function () {
     }).catch(function(){ showPrivacyModal('Could not load privacy policy.'); });
   });
   privacyPara.appendChild(privacyLink);
+  privacyPara.appendChild(document.createTextNode(' | '));
+
+  // Attendance policy link (loads point values from data/attendance.json)
+  var attendanceLink = document.createElement('a');
+  attendanceLink.href = '#';
+  attendanceLink.className = 'privacy-link-anchor';
+  attendanceLink.textContent = 'Attendance Policy';
+  attendanceLink.addEventListener('click', function(e){
+    e.preventDefault();
+    fetch('/data/attendance.json').then(function(r){ return r.json(); }).then(function(data){
+      showAttendanceModal(data);
+    }).catch(function(){ showModal('Attendance Policy', document.createTextNode('Could not load attendance policy.')); });
+  });
+  privacyPara.appendChild(attendanceLink);
   leftSection.appendChild(privacyPara);
 
   footer.appendChild(leftSection);
@@ -395,14 +409,40 @@ window.addEventListener('DOMContentLoaded', function () {
   rightSection.appendChild(disclaimer);
   footer.appendChild(rightSection);
 
-  // Privacy modal elements
+  // Footer policy modals (privacy + attendance share the .privacy-modal styles)
   function showPrivacyModal(text){
+    var pre = document.createElement('pre'); pre.style.whiteSpace = 'pre-wrap'; pre.textContent = text;
+    showModal('Privacy Policy', pre);
+  }
+
+  function showAttendanceModal(data){
+    var body = document.createElement('div');
+    function addTable(title, headers, rows, keys){
+      var h3 = document.createElement('h3'); h3.textContent = title; body.appendChild(h3);
+      var table = document.createElement('table'); table.className = 'attendance-table';
+      var thead = document.createElement('thead'); var hr = document.createElement('tr');
+      headers.forEach(function(t){ var th = document.createElement('th'); th.textContent = t; hr.appendChild(th); });
+      thead.appendChild(hr); table.appendChild(thead);
+      var tbody = document.createElement('tbody');
+      (rows || []).forEach(function(row){
+        var tr = document.createElement('tr');
+        keys.forEach(function(k){ var td = document.createElement('td'); td.textContent = row[k]; tr.appendChild(td); });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody); body.appendChild(table);
+    }
+    addTable('Earning Points', ['Activity (per hour)', 'Points'], data.earning, ['activity', 'points']);
+    addTable('Points Required to Attend', ['Event Type', 'Points'], data.requirements, ['event', 'points']);
+    showModal('Attendance Policy', body);
+  }
+
+  function showModal(title, bodyNode){
     var existing = document.querySelector('.privacy-modal');
     if(existing) existing.remove();
     var modal = document.createElement('div'); modal.className = 'privacy-modal';
     var content = document.createElement('div'); content.className = 'privacy-modal-content';
-    var h = document.createElement('h2'); h.textContent = 'Privacy Policy'; content.appendChild(h);
-    var pre = document.createElement('pre'); pre.style.whiteSpace = 'pre-wrap'; pre.textContent = text; content.appendChild(pre);
+    var h = document.createElement('h2'); h.textContent = title; content.appendChild(h);
+    content.appendChild(bodyNode);
     var close = document.createElement('button');
     close.type = 'button';
     close.textContent = 'Close';
